@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 
 import Form from "./Form/Form";
+import List from "./List/List";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -59,7 +60,7 @@ const Main = () => {
       <CardContent className={classes.cartContent}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            {/* <List /> */}
+            <List />
           </Grid>
         </Grid>
       </CardContent>
