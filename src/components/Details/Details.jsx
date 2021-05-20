@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { Doughnut } from "react-chartjs-2";
 
+import useTransactions from "../../hooks/useTransactions";
+
 const useStyles = makeStyles(() => ({
   income: {
     borderBottom: "10px solid rgba(0, 255, 0, 0.5)",
@@ -15,13 +17,14 @@ const useStyles = makeStyles(() => ({
 
 const Details = ({ title }) => {
   const classes = useStyles();
+  const { total, chartData } = useTransactions(title);
 
   return (
     <Card className={title === "Income" ? classes.income : classes.expense}>
-      <CardHeader title={title} subheader="sub header" />
+      <CardHeader title={title} subheader="Sub header" />
       <CardContent>
-        <Typography variant="h5">$50</Typography>
-        {/* <Doughnut data={[1, 2, 3, 4, 5]} /> */}
+        <Typography variant="h5">${total}</Typography>
+        <Doughnut data={chartData} />
       </CardContent>
     </Card>
   );
