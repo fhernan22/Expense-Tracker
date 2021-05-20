@@ -12,11 +12,11 @@ export const ExpenseTrackerProvider = ({ children }) => {
   const addTransaction = (transaction) =>
     dispatch({ type: "ADD_TRANSACTION", payload: transaction });
   const deleteTransaction = (id) =>
-    dispatch({ type: "Delete_Transaction", payload: id });
+    dispatch({ type: "DELETE_TRANSACTION", payload: id });
 
   return (
     <ExpenseTrackerContext.Provider
-      value={{ addTransaction, deleteTransaction }}
+      value={{ transactions, addTransaction, deleteTransaction }}
     >
       {children}
     </ExpenseTrackerContext.Provider>
