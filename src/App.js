@@ -6,6 +6,12 @@ import Details from "./components/Details/Details";
 import Main from "./components/Main/Main";
 import useStyles from "./styles";
 
+import {
+  PushToTalkButton,
+  PushToTalkButtonContainer,
+  ErrorPanel,
+} from "@speechly/react-ui";
+
 const App = () => {
   const classes = useStyles();
   return (
@@ -28,6 +34,10 @@ const App = () => {
           <Details title="Expense" />
         </Grid>
       </Grid>
+      <PushToTalkButtonContainer>
+        <PushToTalkButton />
+        <ErrorPanel />
+      </PushToTalkButtonContainer>
     </div>
   );
 };
