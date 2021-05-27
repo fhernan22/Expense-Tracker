@@ -14,6 +14,7 @@ import {
 
 import Form from "./Form/Form";
 import List from "./List/List";
+import InfoCard from "../InfoCard";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -50,11 +51,10 @@ const Main = () => {
           Total Balance ${balance}
         </Typography>
         <Typography
-          variant="subtitle2"
+          variant="subtitle1"
           style={{ lineHeight: "1.5em", marginTop: "20px" }}
         >
-          {/* <InfoCard /> */}
-          Try saying: Add income for $100 in Category Salary for Monday...
+          <InfoCard />
         </Typography>
         <Divider className={classes.divider} />
         <Form />

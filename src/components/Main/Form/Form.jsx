@@ -21,6 +21,8 @@ import {
 } from "../../../constants/categories";
 import formatDate from "../../../utils/formatDate";
 
+import CustomizedSnackbar from "../../Snackbar/Snackbar";
+
 const useStyles = makeStyles(() => ({
   radioGroup: {
     display: "flex",
@@ -43,6 +45,7 @@ const Form = () => {
   const classes = useStyles();
   const { addTransaction } = useContext(ExpenseTrackerContext);
   const [formData, setFormData] = useState(initialState);
+  const [open, setOpen] = React.useState(false);
   const { segment } = useSpeechContext();
 
   const createTransaction = () => {
@@ -54,6 +57,8 @@ const Form = () => {
       amount: Number(formData.amount),
       id: uuidv4(),
     };
+
+    setOpen(true);
     addTransaction(transaction);
     setFormData(initialState);
   };
@@ -119,6 +124,7 @@ const Form = () => {
 
   return (
     <Grid container spacing={2}>
+      <CustomizedSnackbar open={open} setOpen={setOpen} />
       <Grid item xs={12}>
         <Typography align="center" variant="subtitle2" gutterBottom>
           {segment && <>{segment.words.map((word) => word.value).join(" ")}</>}
