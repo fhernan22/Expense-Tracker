@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from "react";
 
 import contextReducer from "./contextReducer";
 
-const initialState = [];
+const initialState = JSON.parse(localStorage.getItem("transactions")) || [];
 
 export const ExpenseTrackerContext = createContext(initialState);
 
@@ -14,9 +14,15 @@ export const ExpenseTrackerProvider = ({ children }) => {
   const deleteTransaction = (id) =>
     dispatch({ type: "DELETE_TRANSACTION", payload: id });
 
+  const balance = transactions.reduce(
+    (acc, currVal) =>
+      currVal.type === "Expense" ? acc - currVal.amount : acc + currVal.amount,
+    0
+  );
+
   return (
     <ExpenseTrackerContext.Provider
-      value={{ transactions, addTransaction, deleteTransaction }}
+      value={{ transactions, balance, addTransaction, deleteTransaction }}
     >
       {children}
     </ExpenseTrackerContext.Provider>
